@@ -80,11 +80,15 @@ CMock
 !SLIDE bullets incremental
 Linkage
 =======
+* each test gets its own executable
 * tests are linked against real source, mock dependence
 * source is linked against real dependence
 
-!SLIDE
-insert image here
+!SLIDE center
+![1](1.png)
+
+!SLIDE center
+![2](2.png)
 
 !SLIDE bullets
 CException
