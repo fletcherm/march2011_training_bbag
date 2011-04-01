@@ -3,7 +3,7 @@ Knowlogy Weeklong TDD Training
 ==============================
 
 !SLIDE center
-![K](k.jpg)
+![K](https://github.com/fletcherm/march2011_training_bbag/raw/master/one/k.jpg)
 
 !SLIDE bullets
 Ceedling
@@ -85,10 +85,10 @@ Linkage
 * source is linked against real dependence
 
 !SLIDE center
-![1](1.png)
+![1](https://github.com/fletcherm/march2011_training_bbag/raw/master/one/1.png)
 
 !SLIDE center
-![2](2.png)
+![2](https://github.com/fletcherm/march2011_training_bbag/raw/master/one/2.png)
 
 !SLIDE bullets
 CException
