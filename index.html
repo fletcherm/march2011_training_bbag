@@ -1,0 +1,266 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <title>My Preso</title>
+
+  <link rel="stylesheet" href="./css/reset.css" type="text/css"/>
+  <link rel="stylesheet" href="./css/showoff.css" type="text/css"/>
+
+  <script type="text/javascript" src="./js/jquery-1.4.2.min.js"></script>
+  <script type="text/javascript" src="./js/jquery.cycle.all.js"></script>
+	<script type="text/javascript" src="./js/jquery-print.js"></script>
+  <script type="text/javascript" src="./js/jquery.batchImageLoad.js"></script>
+
+  <script type="text/javascript" src="./js/jquery.doubletap-0.1.js"></script>
+
+  <script type="text/javascript" src="./js/fg.menu.js"></script>
+  <script type="text/javascript" src="./js/showoff.js"></script>
+  <script type="text/javascript" src="./js/jTypeWriter.js"> </script>
+  <script type="text/javascript" src="./js/sh_main.min.js"></script>
+  <script type="text/javascript" src="./js/core.js"></script>
+  <script type="text/javascript" src="./js/showoffcore.js"></script>
+
+  <link type="text/css" href="./css/fg.menu.css" media="screen" rel="stylesheet" />
+  <link type="text/css" href="./css/theme/ui.all.css" media="screen" rel="stylesheet" />
+  <link type="text/css" href="./css/sh_style.css" rel="stylesheet" >
+
+  
+
+  
+
+  <script type="text/javascript">
+  $(function(){
+    setupPreso(false, './');
+  });
+  </script>
+</head>
+
+<body>
+
+
+<a tabindex="0" href="#search-engines" class="fg-button fg-button-icon-right ui-widget ui-state-default ui-corner-all" id="navmenu"><span class="ui-icon ui-icon-triangle-1-s"></span>slides</a>
+<div id="navigation" class="hidden"></div>
+
+<div id="help">
+  <table>
+    <tr><td class="key">space, &rarr;</td><td>next slide</td></tr>
+    <tr><td class="key">&larr;</td><td>previous slide</td></tr>
+    <tr><td class="key">d</td><td>debug mode</td></tr>
+    <tr><td class="key">## &lt;ret&gt;</td><td>go to slide #</td></tr>
+    <tr><td class="key">c</td><td>table of contents (vi)</td></tr>
+    <tr><td class="key">f</td><td>toggle footer</td></tr>
+    <tr><td class="key">r</td><td>reload slides</td></tr>
+    <tr><td class="key">z</td><td>toggle help (this)</td></tr>
+  </table>
+</div>
+
+<div class="buttonNav">
+  <input type="submit" onClick="prevStep();" value="prev"/>
+  <input type="submit" onClick="nextStep();" value="next"/>
+</div>
+
+<div id="preso">loading presentation...</div>
+<div id="footer">
+  <span id="slideInfo"></span>
+  <span id="debugInfo"></span>
+</div>
+
+<div id="slides" class="offscreen" style="display:none;">
+<div class="slide" data-transition="none"><div class="content" ref="one/01_slide/1">
+<h1>Knowlogy Weeklong TDD Training</h1></div>
+</div><div class="slide" data-transition="none"><div class="content center" ref="one/01_slide/2">
+<p><img src="file:///Users/fletcher/git/github/march2011_training_bbag/one/k.jpg" alt="K"/></p></div>
+</div><div class="slide" data-transition="none"><div class="content bullets" ref="one/01_slide/3">
+<h1>Ceedling</h1>
+
+<ul>
+<li>Unity</li>
+<li>CMock</li>
+<li>CException</li>
+</ul>
+</div>
+</div><div class="slide" data-transition="none"><div class="content code smaller" ref="one/01_slide/4">
+<h1>Unity</h1>
+
+<pre class="sh_C"><code>#include "unity.h"
+
+void setUp(void) {}
+void tearDown(void) {}
+
+void test_NumberValidator_IsNumber_DoesNotAcceptBlankString(void) {}
+
+void test_NumberValidator_IsNumber_AcceptsZero(void) {}</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content bullets incremental" ref="one/01_slide/5">
+<h1>Assertions</h1>
+
+<ul>
+<li><code>TEST_ASSERT</code></li>
+<li><code>TEST_ASSERT_FALSE</code></li>
+<li><code>TEST_ASSERT_EQUAL</code></li>
+</ul>
+</div>
+</div><div class="slide" data-transition="none"><div class="content smaller" ref="one/01_slide/6">
+<pre class="sh_C"><code>void test_NumberValidator_IsNumber_AcceptsNegativeIntegers(void)
+{
+  TEST_ASSERT(NumberValidator_IsNumber("-5"));
+  TEST_ASSERT(NumberValidator_IsNumber("-5555"));
+  TEST_ASSERT(NumberValidator_IsNumber("-93899393"));
+}</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content smaller" ref="one/01_slide/7">
+<pre class="sh_C"><code>void test_NumberValidator_IsNumber_DoesNotAcceptNonNumbers(void)
+{
+  TEST_ASSERT_FALSE(NumberValidator_IsNumber("-"));
+  TEST_ASSERT_FALSE(NumberValidator_IsNumber(" -a"));
+  TEST_ASSERT_FALSE(NumberValidator_IsNumber("abc"));
+  TEST_ASSERT_FALSE(NumberValidator_IsNumber("a"));
+  TEST_ASSERT_FALSE(NumberValidator_IsNumber("100%"));
+}</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content bullets" ref="one/01_slide/8">
+<h1>CMock</h1>
+
+<ul>
+<li>follows convention to generate mock files from a header</li>
+</ul>
+</div>
+</div><div class="slide" data-transition="none"><div class="content small" ref="one/01_slide/9">
+<h1>CMock</h1>
+
+<pre class="sh_C"><code>#include "ApplicationPresenter.h"
+#include "mock_ApplicationModel.h"
+#include "mock_ApplicationView.h"
+
+void test_ApplicationPresenter_ShowsErrorWhenBadArgs() {
+  ApplicationView_GetDivisor_ExpectAndReturn("21");
+  ApplicationView_GetDividend_ExpectAndReturn("0");
+  ApplicationModel_ValidateArguments
+                  _ExpectAndReturn("21", "0", FALSE);
+  ApplicationView_ShowError_Expect();
+
+  ApplicationPresenter_CalculateClickedCallback();
+}</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content bullets incremental" ref="one/01_slide/10">
+<h1>Linkage</h1>
+
+<ul>
+<li>each test gets its own executable</li>
+<li>tests are linked against real source, mock dependence</li>
+<li>source is linked against real dependence</li>
+</ul>
+</div>
+</div><div class="slide" data-transition="none"><div class="content center" ref="one/01_slide/11">
+<p><img src="file:///Users/fletcher/git/github/march2011_training_bbag/one/1.png" alt="1"/></p></div>
+</div><div class="slide" data-transition="none"><div class="content center" ref="one/01_slide/12">
+<p><img src="file:///Users/fletcher/git/github/march2011_training_bbag/one/2.png" alt="2"/></p></div>
+</div><div class="slide" data-transition="none"><div class="content bullets" ref="one/01_slide/13">
+<h1>CException</h1>
+
+<ul>
+<li>exception handling implemented with setjmp and longjmp</li>
+</ul>
+</div>
+</div><div class="slide" data-transition="none"><div class="content bullets" ref="one/01_slide/14">
+<h1>Ceedling</h1>
+
+<ul>
+<li>compile source</li>
+<li>generate mocks</li>
+<li>compile tests</li>
+<li>run tests</li>
+</ul>
+</div>
+</div><div class="slide" data-transition="none"><div class="content bullets incremental" ref="one/01_slide/15">
+<h1>Last week</h1>
+
+<ul>
+<li>1/2 Monday - intro to TDD and tools</li>
+<li>1/2 Monday - small sample project walkthrough</li>
+<li>Tuesday, Wednesday, Thursday - socket project w/ cucumbers</li>
+<li>1/2 Friday - more Agile ideas (iterations, burndowns, etc)</li>
+</ul>
+</div>
+</div><div class="slide" data-transition="none"><div class="content bullets incremental" ref="one/01_slide/16">
+<h1>Sample project</h1>
+
+<ul>
+<li>client - server apps</li>
+<li>put and get (pid, name) tuples for an id</li>
+<li>cucumbers for both client and server</li>
+<li>use cucumbers to guide features, use ceedling tools to guide development</li>
+</ul>
+</div>
+</div><div class="slide" data-transition="none"><div class="content code small" ref="one/01_slide/17">
+<pre><code>Feature: Ping command
+As a client
+I want to ping the server and see a response
+
+Scenario: Pinging the server
+Given the server is online
+When I ping the server
+Then the client should receive a positive response
+And the exit status should be 0
+</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content code small" ref="one/01_slide/18">
+<pre><code>Feature: Put and get commands
+As a server
+...
+
+Scenario: Putting and getting multiple pairs
+Given the server is online
+When I put the pid "1" with the name "init" for id "abc"
+And I put the pid "99" with the name "ps" for id "abc"
+And I put the pid "187" with the name "ruby" for id "abc"
+
+When I get the pairs for id "abc"
+Then the pid "1" with the name "init" should be returned
+And the pid "99" with the name "ps" should be returned
+And the pid "187" with the name "ruby" should be returned
+</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content code small" ref="one/01_slide/19">
+<pre><code>Scenario: Putting and getting different ids
+Given the server is online
+When I put the pid "1" with the name "init" for id "123"
+And I put the pid "99" with the name "ps" for id "abc"
+
+When I get the pairs for id "123"
+Then the pid "1" with the name "init" should be returned
+
+When I get the pairs for id "abc"
+Then the pid "99" with the name "ps" should be returned
+</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content bullets incremental" ref="one/01_slide/20">
+<h1>Successes</h1>
+
+<ul>
+<li>All groups got client working</li>
+<li>One - two groups got server working</li>
+<li>Github repository made pushing fixes and changes easy</li>
+<li>Git branches for server, client helped overcome limitations and keep things separated</li>
+</ul>
+</div>
+</div><div class="slide" data-transition="none"><div class="content bullets incremental" ref="one/01_slide/21">
+<ul>
+<li>Smart group that enjoyed the course and working together</li>
+<li>Gave good feedback on how to improve course and material</li>
+<li>Very involved and interested in Agile PM discussion</li>
+<li>Hinted another group is interested in training as well</li>
+<li>~$157 effective rate</li>
+</ul>
+</div>
+</div><div class="slide" data-transition="none"><div class="content bullets incremental" ref="one/01_slide/22">
+<h1>Improvements</h1>
+
+<ul>
+<li>document client - server protocol (rspec?)</li>
+<li>better intro to straight unit testing, then mocks</li>
+<li>better intro to system tests (ok, what do I run???)</li>
+<li>go through example of making usage pass?</li>
+</ul>
+</div>
+</div>
+</div>
+
+</body>
+</html>
